@@ -10,6 +10,7 @@ public class CauseRandomAction : MonoBehaviour
     public float minTime;
     public float maxTime;
     public UnityEvent anomalyA1, anomalyA2, anomalyA3, anomalyA4;
+    private Coroutine randomizer;
     
     public void BeginGame() 
     {
@@ -18,7 +19,7 @@ public class CauseRandomAction : MonoBehaviour
            anomalyA1, anomalyA2, anomalyA3, anomalyA4
         };
     
-        StartCoroutine(PerformRandomAction());
+        randomizer = StartCoroutine(PerformRandomAction());
 
     }
     
@@ -34,6 +35,18 @@ public class CauseRandomAction : MonoBehaviour
 
         StartCoroutine(PerformRandomAction());
 
+    }
+
+    public void OnButtonPressed()
+    {
+        StopCoroutine(randomizer);
+        StartCoroutine(PauseAndResume());
+    }
+
+    IEnumerator PauseAndResume()
+    {
+        yield return new WaitForSeconds(16);
+        randomizer = StartCoroutine(PerformRandomAction());
     }
 
 }
