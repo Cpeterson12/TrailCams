@@ -9,14 +9,14 @@ public class CauseRandomAction : MonoBehaviour
     public UnityEvent[] actions;
     public float minTime;
     public float maxTime;
-    public UnityEvent anomalyA1, anomalyA2, anomalyA3, anomalyA4;
+    public UnityEvent anomalyA1, anomalyA2, anomalyA3, anomalyA4, anomalyB1, anomalyB2, anomalyB3, anomalyB4;
     private Coroutine randomizer;
     
     public void BeginGame() 
     {
         actions = new UnityEvent[] 
         {
-           anomalyA1, anomalyA2, anomalyA3, anomalyA4
+           anomalyA1, anomalyA2, anomalyA3, anomalyA4 , anomalyB1, anomalyB2, anomalyB3, anomalyB4
         };
     
         randomizer = StartCoroutine(PerformRandomAction());
