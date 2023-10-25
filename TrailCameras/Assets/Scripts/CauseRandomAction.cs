@@ -17,7 +17,7 @@ public class CauseRandomAction : MonoBehaviour
         {
            anomalyA1, anomalyA2, anomalyA3, anomalyA4 , anomalyB1, anomalyB2, anomalyB3, anomalyB4, anomalyC1, anomalyC2, anomalyC3, anomalyC4
         };
-    
+        
         randomizer = StartCoroutine(PerformRandomAction());
 
     }
@@ -25,6 +25,11 @@ public class CauseRandomAction : MonoBehaviour
 
     IEnumerator PerformRandomAction() 
     {
+        if (randomizer == null) 
+        {
+            // First iteration, add delay 
+            yield return new WaitForSeconds(10f);
+        }
 
         int randomIndex = Random.Range(0, actions.Length);
         actions[randomIndex].Invoke();
