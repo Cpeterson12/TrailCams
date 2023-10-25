@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 545802cc46c8aed4a84fb7e3eb15803b, type: 3}
-  m_Name: GameTimer
+  m_Script: {fileID: 11500000, guid: 53ab4b98ebe5c6145a2b0af5794cc919, type: 3}
+  m_Name: GameOver
   m_EditorClassIdentifier: 
-  data: 360
