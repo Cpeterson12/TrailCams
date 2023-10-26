@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HighlightObjBehaviour : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class HighlightObjBehaviour : MonoBehaviour
   
     private Material originalMaterial;
     public GameObject gameObj;
+    public UnityEvent highlightEvent, unhighlightEvent;
 
     void Start() 
     {
@@ -19,6 +21,7 @@ public class HighlightObjBehaviour : MonoBehaviour
     {
         if (gameObj.activeSelf)
         {
+            highlightEvent.Invoke();
             GetComponent<Renderer>().material = highlightMaterial;
             StartCoroutine(UnhighlightAfterDelay());
         }
@@ -27,11 +30,13 @@ public class HighlightObjBehaviour : MonoBehaviour
     public void Unhighlight() 
     {
         GetComponent<Renderer>().material = originalMaterial; 
+        unhighlightEvent.Invoke();
     }
     
     IEnumerator UnhighlightAfterDelay() 
     {
         yield return new WaitForSeconds(8f); 
         Unhighlight();
+        unhighlightEvent.Invoke();
     }
 }
